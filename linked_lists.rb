@@ -47,19 +47,15 @@ class LinkedList
   end
 
   def head
-  if @head.nil? 
-    return
-  else
+    return if @head.nil?
+
     @head
-  end
   end
 
   def tail
-    if @tail.nil? 
-      return
-    else
-      @tail
-    end
+    return if @tail.nil?
+
+    @tail
   end
 
   def to_s
