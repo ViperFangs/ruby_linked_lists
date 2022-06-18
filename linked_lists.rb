@@ -74,6 +74,16 @@ class LinkedList
     current_node
   end
 
+  def pop
+    return if @head.nil?
+  end
+
+  def contains?(value)
+  end
+
+  def find(value)
+  end
+
   def to_s
     return if @head.nil?
 
@@ -85,6 +95,12 @@ class LinkedList
     end
 
     puts 'nil'
+  end
+  
+  def insert_at(value, index)
+  end
+
+  def remove_at(index)
   end
 
   private
@@ -109,4 +125,3 @@ new_list.prepend(1)
 
 new_list.to_s
 puts new_list.at(3).value
-
