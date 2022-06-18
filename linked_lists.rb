@@ -47,23 +47,32 @@ class LinkedList
   end
 
   def head
-    head.nil? ? return : return @head
+  if @head.nil? 
+    return
+  else
+    @head
+  end
   end
 
   def tail
-    tail.nil? ? return : return @tail
+    if @tail.nil? 
+      return
+    else
+      @tail
+    end
   end
 
   def to_s
-    return if head.nil?
+    return if @head.nil?
 
     current_node = @head
 
     until current_node.nil?
-      print "( " + current_node.value + " ) -> "
+      print "( #{current_node.value} ) -> "
+      current_node = current_node.next_node
     end
 
-    print "nil"
+    puts 'nil'
   end
 
   private
@@ -74,3 +83,8 @@ class LinkedList
     node
   end
 end
+
+new_list = LinkedList.new
+new_list.append(10)
+new_list.to_s
+
