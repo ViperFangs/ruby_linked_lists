@@ -21,8 +21,7 @@ class LinkedList
   end
 
   def append(value)
-    new_node = Node.new
-    new_node.value = value
+    new_node = create_node(value)
 
     if @head.nil?
       @head = new_node
@@ -32,5 +31,30 @@ class LinkedList
 
     @tail = new_node
     @size += 1
+  end
+
+  def to_s
+    
+  end
+
+  def prepend(value)
+    new_node = create_node(value)
+
+    if @head.nil?
+      @tail = new_node
+    else
+      new_node.next = @head
+    end
+
+    @head = new_node
+    @size += 1
+  end
+
+  private
+
+  def create_node(value)
+    node = Node.new
+    node.value = value
+    node
   end
 end
