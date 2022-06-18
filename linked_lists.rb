@@ -33,10 +33,6 @@ class LinkedList
     @size += 1
   end
 
-  def to_s
-    
-  end
-
   def prepend(value)
     new_node = create_node(value)
 
@@ -48,6 +44,20 @@ class LinkedList
 
     @head = new_node
     @size += 1
+  end
+
+  def head
+    head.nil? ? return : return @head
+  end
+
+  def tail
+    tail.nil? ? return : return @tail
+  end
+
+  def to_s
+    return if head.nil?
+
+
   end
 
   private
