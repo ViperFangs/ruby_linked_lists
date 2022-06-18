@@ -93,6 +93,19 @@ class LinkedList
   end
 
   def find(value)
+    return nil if @head.nil?
+
+    current_node = @head
+    current_index = 0
+
+    until current_node.nil?
+      return current_index if current_node.value == value
+
+      current_index += 1
+      current_node = current_node.next_node
+    end
+
+    nil
   end
 
   def to_s
@@ -124,7 +137,13 @@ class LinkedList
 end
 
 new_list = LinkedList.new
+
+puts new_list.find(2)
+
+puts new_list.contains?(10)
 new_list.append(10)
+puts new_list.contains?(10)
+
 new_list.append(20)
 new_list.append(30)
 
@@ -136,3 +155,6 @@ new_list.prepend(1)
 
 new_list.to_s
 puts new_list.at(3).value
+puts new_list.find(2)
+puts new_list.find(1)
+puts new_list.find(10)
