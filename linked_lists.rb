@@ -57,7 +57,13 @@ class LinkedList
   def to_s
     return if head.nil?
 
+    current_node = @head
 
+    until current_node.nil?
+      print "( " + current_node.value + " ) -> "
+    end
+
+    print "nil"
   end
 
   private
