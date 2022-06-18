@@ -39,7 +39,7 @@ class LinkedList
     if @head.nil?
       @tail = new_node
     else
-      new_node.next = @head
+      new_node.next_node = @head
     end
 
     @head = new_node
@@ -56,6 +56,22 @@ class LinkedList
     return if @tail.nil?
 
     @tail
+  end
+
+  def at(index)
+    puts "\nIncorrect index value" unless index.positive?
+
+    current_node = @head
+    current_index = 0
+
+    until current_node.nil?
+      break if current_index == index
+
+      current_index += 1
+      current_node = current_node.next_node
+    end
+
+    current_node
   end
 
   def to_s
@@ -82,5 +98,15 @@ end
 
 new_list = LinkedList.new
 new_list.append(10)
+new_list.append(20)
+new_list.append(30)
+
 new_list.to_s
+
+new_list.prepend(3)
+new_list.prepend(2)
+new_list.prepend(1)
+
+new_list.to_s
+puts new_list.at(3).value
 
