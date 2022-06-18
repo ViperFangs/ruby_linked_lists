@@ -76,6 +76,20 @@ class LinkedList
 
   def pop
     return if @head.nil?
+
+    previous_node = @head
+    current_node = @head
+
+    until current_node.next_node.nil?
+      previous_node = current_node
+      current_node = current_node.next_node
+    end
+
+    popped_value = current_node.value
+    previous_node.next_node = nil
+    @tail = previous_node
+    @size -= 1
+    popped_value
   end
 
   def contains?(value)
@@ -120,12 +134,41 @@ class LinkedList
 
     puts 'nil'
   end
-  
+
   def insert_at(value, index)
+    if index > size
+      puts "\nIndex out of bounds"
+      return
+    end
+
+    current_node = @head
+    previous_node = @head
+    new_node = create_node(value)
+
+    if index == size
+      append(value)
+      return
+
+    elsif index.zero?
+      prepend(value)
+      return
+    end
+
+    current_index = 0
+
+    until current_node.nil?
+      break if current_index == index
+
+      current_index += 1
+      previous_node = current_node
+      current_node = current_node.next_node
+    end
+
+    new_node.next_node = current_node
+    previous_node.next_node = new_node
   end
 
-  def remove_at(index)
-  end
+  def remove_at(index); end
 
   private
 
@@ -158,3 +201,11 @@ puts new_list.at(3).value
 puts new_list.find(2)
 puts new_list.find(1)
 puts new_list.find(10)
+
+puts new_list.size
+puts new_list.pop
+puts new_list.size
+puts new_list.to_s
+
+new_list.insert_at(15,0)
+puts new_list.to_s
