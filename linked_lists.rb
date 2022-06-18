@@ -31,7 +31,6 @@ class LinkedList
     end
 
     @tail = new_node
-
     @size += 1
   end
 end
