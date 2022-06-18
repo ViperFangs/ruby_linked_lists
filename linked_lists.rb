@@ -141,10 +141,6 @@ class LinkedList
       return
     end
 
-    current_node = @head
-    previous_node = @head
-    new_node = create_node(value)
-
     if index == size
       append(value)
       return
@@ -154,6 +150,9 @@ class LinkedList
       return
     end
 
+    current_node = @head
+    previous_node = @head
+    new_node = create_node(value)
     current_index = 0
 
     until current_node.nil?
@@ -166,9 +165,42 @@ class LinkedList
 
     new_node.next_node = current_node
     previous_node.next_node = new_node
+    @size += 1
   end
 
-  def remove_at(index); end
+  def remove_at(index)
+    if index > size
+      puts "\nIndex out of bounds"
+      return
+    end
+
+    if index == size
+      pop
+      return
+
+    elsif index.zero?
+      temp_node = @head
+      @head = @head.next_node
+      temp_node = nil
+      return
+    end
+
+    current_node = @head
+    previous_node = @head
+    current_index = 0
+
+    until current_node.nil?
+      break if current_index == index
+
+      current_index += 1
+      previous_node = current_node
+      current_node = current_node.next_node
+    end
+
+    previous_node.next_node = current_node.next_node
+    current_node = nil
+    @size -= 1
+  end
 
   private
 
@@ -182,7 +214,6 @@ end
 new_list = LinkedList.new
 
 puts new_list.find(2)
-
 puts new_list.contains?(10)
 new_list.append(10)
 puts new_list.contains?(10)
@@ -207,5 +238,8 @@ puts new_list.pop
 puts new_list.size
 puts new_list.to_s
 
-new_list.insert_at(15,0)
+new_list.insert_at(15, 4)
+puts new_list.to_s
+
+new_list.insert_at(4)
 puts new_list.to_s
